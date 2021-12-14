@@ -1,0 +1,115 @@
+<app-nav-bar></app-nav-bar>
+<app-side-bar></app-side-bar>
+
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+    data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <div class="page-wrapper">
+
+        <div class="container-fluid">
+            <h1>product list</h1>
+
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Product id</th>
+                        <th scope="col">Product code</th>
+                        <th scope="col">Product Libelle</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of productData">
+                        <td>{{row.id}}</td>
+                        <td>{{row.productCode}}</td>
+                        <td>{{row.productLibelle}}</td>
+                        <td>{{row.price}} DT</td>
+
+                        <td>
+                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                (click)="onEdit(row)">Edit</button>
+                            <button class="btn btn-danger mx-3" (click)="deleteProduct(row)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <div class="d-flex">
+                    <button (click)="clickAddProduct()" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        class="btn btn-success">Add product</button>
+                </div>
+            </table>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add product</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="formValue">
+                                <fieldset>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Product code</label>
+                                        <input type="text" formControlName="productCode" minlength="5"
+                                            class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                                        <span class="text-danger"
+                                            *ngIf="formValue.controls['productCode'].dirty && formValue.hasError('required','productCode')">Code
+                                            required</span>
+
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Product libelle</label>
+                                        <input type="text" formControlName="productLibelle" class="form-control"
+                                            id="exampleInputPassword1"><br>
+                                        <span class="text-danger"
+                                            *ngIf="formValue.controls['productLibelle'].dirty && formValue.hasError('required','productLibelle')">libelle
+                                            required</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Price</label>
+                                        <input type="number" formControlName="price" required
+                                            onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+                                            min="0" class="form-control" id="exampleInputPassword1"><br>
+                                        <span class="text-danger"
+                                            *ngIf="formValue.controls['price'].dirty && formValue.hasError('required','price')">price
+                                            required</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="flex">
+                                            <div>
+                                                <label for="exampleInputPassword1" class="form-label">Image</label>
+                                                <input formControlName="file" type="file" class="form-control"
+                                                    (change)="selectFile($event)" class="form-control" id="product_img">
+                                                <span style="color: red; margin-top: 5px;">{{msg}}</span>
+                                            </div>
+                                            <div style="margin-top: 5px;">
+                                                <img style="border-radius: 50%; border: black solid 1px;" [src]="url"
+                                                    *ngIf="url" alt="Avatar" width="60" height="60">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!--   <angular-file-uploader [config]="afuConfig">
+                                </angular-file-uploader> -->
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="cancel" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="button" [disabled]="!formValue.valid" *ngIf="showAdd" class="btn btn-primary"
+                                (click)="postProductDetails()">Add</button>
+                            <button type="button" *ngIf="showUpdate" class="btn btn-primary"
+                                (click)="updateProductDetails()">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

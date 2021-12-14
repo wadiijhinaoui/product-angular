@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": 25,
+      "productCode": "fxz5",
+      "productLibelle": "gilet",
+      "price": 45,
+      "image": "img.jpg"
+    },
+    {
+      "id": 26,
+      "productCode": "clsdfs",
+      "productLibelle": "lait",
+      "price": 1,
+      "image": "img.jpg"
+    },
+    {
+      "id": 27,
+      "productCode": "hdg7s",
+      "productLibelle": "farine",
+      "price": 0.5,
+      "image": "img.jpg"
+    },
+    {
+      "id": 28,
+      "productCode": "hdg8s",
+      "productLibelle": "phjghjg",
+      "price": 0.2,
+      "image": "PngItem_205866.png"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

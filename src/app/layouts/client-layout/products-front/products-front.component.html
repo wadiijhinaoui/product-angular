@@ -1,0 +1,54 @@
+<app-header></app-header>
+
+
+<!--<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let item of productList">
+            <div class="card col-md-3">
+                <h5>{{item.productLibelle}}</h5>
+                <p></p>
+                <p><strong>
+                        price:
+                    </strong> DT {{item.price}}</p>
+                <div style="margin-top: 5px; margin-bottom: 5px;">
+                    <img style="border-radius: 50%; border: black solid 1px;"
+                        [src]="'../../../../../../../uploads/' + item.image" alt=" Avatar" width="60" height="60">
+                </div>
+                <button class="fas fa-shopping-cart">add to cart</button>
+
+            </div>
+        </ng-container>
+
+    </div>
+</div>-->
+
+
+<div _ngcontent-cml-c20="" class="product-section mt-150 mb-150">
+    <div _ngcontent-cml-c20="" class="container">
+        <div _ngcontent-cml-c20="" class="row">
+            <div _ngcontent-cml-c20="" class="col-lg-8 offset-lg-2 text-center">
+                <div _ngcontent-cml-c20="" class="section-title">
+                    <h3 _ngcontent-cml-c20=""><span _ngcontent-cml-c20="" class="orange-text">Our</span> Products</h3>
+
+                </div>
+            </div>
+        </div>
+        <div _ngcontent-cml-c20="" class="row">
+            <div _ngcontent-cml-c20="" class="col-lg-4 col-md-6 text-center" *ngFor="let item of productList">
+                <div _ngcontent-cml-c20="" class="single-product-item">
+                    <div style="margin-top: 5px; margin-bottom: 5px;">
+                        <img style="border-radius: 50%; border: black solid 1px;"
+                            [src]="'../../../../../../../uploads/' + item.image" alt=" Avatar" width="60" height="60">
+                    </div>
+                    <h3 _ngcontent-cml-c20="">{{item.productLibelle}}</h3>
+                    <p _ngcontent-cml-c20="" class="product-price"><span _ngcontent-cml-c20=""></span> DT {{item.price}}
+                    </p><a _ngcontent-cml-c20="" href="cart.html" class="cart-btn"><i _ngcontent-cml-c20=""
+                            class="fas fa-shopping-cart" aria-hidden="true"></i> Add to Cart</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
